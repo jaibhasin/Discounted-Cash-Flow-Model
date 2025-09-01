@@ -1,4 +1,3 @@
-dcf.py
 def calculate_dcf():
     print("=== DCF Calculator using Owner Earnings ===\n")
     try:
