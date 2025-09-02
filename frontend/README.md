@@ -1,36 +1,160 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎨 DCF Calculator Frontend
 
-## Getting Started
+> Modern, responsive web interface for the DCF Calculator built with Next.js 15, React 19, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Quick Start
 
 ```bash
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
+
+# Lint code
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠 Technology Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **[Next.js 15](https://nextjs.org)** - React framework with App Router
+- **[React 19](https://react.dev)** - Latest React with concurrent features
+- **[TypeScript 5](https://www.typescriptlang.org)** - Type-safe JavaScript
+- **[Tailwind CSS 4](https://tailwindcss.com)** - Utility-first CSS framework
+- **[Lucide React](https://lucide.dev)** - Beautiful icon library
+- **[Turbopack](https://turbo.build/pack)** - Ultra-fast bundler for development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📱 Features
 
-## Learn More
+### User Interface
+- **Responsive Design**: Optimized for desktop, tablet, and mobile
+- **Modern Styling**: Clean, professional interface with Tailwind CSS
+- **Interactive Forms**: Real-time validation and user feedback
+- **Progress Visualization**: Visual breakdown of DCF value components
 
-To learn more about Next.js, take a look at the following resources:
+### Performance
+- **Fast Development**: Turbopack for instant hot reloads
+- **Optimized Builds**: Next.js automatic optimization
+- **Type Safety**: Full TypeScript implementation
+- **SEO Ready**: Server-side rendering support
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### User Experience
+- **Form Validation**: Real-time input validation and error messages
+- **Loading States**: Smooth loading indicators
+- **Error Handling**: Graceful error handling and user feedback
+- **Accessibility**: WCAG compliant design
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🏗 Project Structure
 
-## Deploy on Vercel
+```
+frontend/
+├── src/
+│   └── app/                  # Next.js App Router
+│       ├── globals.css       # Global styles
+│       ├── layout.tsx        # Root layout component
+│       └── page.tsx          # Home page component
+├── public/                   # Static assets
+├── package.json             # Dependencies and scripts
+├── tsconfig.json           # TypeScript configuration
+├── next.config.ts          # Next.js configuration
+├── postcss.config.mjs      # PostCSS configuration
+├── eslint.config.mjs       # ESLint configuration
+└── README.md               # This file
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔧 Development
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Available Scripts
+
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build for production with Turbopack
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
+
+### Development Server
+
+The development server runs on `http://localhost:3000` with:
+- Hot module replacement
+- Fast refresh
+- Real-time error overlay
+- TypeScript checking
+
+### Environment Setup
+
+1. Ensure the backend API is running on `http://localhost:8000`
+2. The frontend is configured to connect to this API endpoint
+3. CORS is handled by the backend FastAPI application
+
+## 🎯 Key Components
+
+### Form Handling
+- Real-time input validation
+- Error message display
+- Responsive form layout
+- Accessible form controls
+
+### Results Display
+- Tabular data presentation
+- Progress bars for value breakdown
+- Responsive card layouts
+- Interactive elements
+
+### API Integration
+- Type-safe API calls
+- Error handling and user feedback
+- Loading states management
+- Response data validation
+
+## 🔍 API Integration
+
+The frontend integrates with the DCF Calculator API:
+
+```typescript
+// Example API call
+const response = await fetch('http://localhost:8000/calculate-dcf', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(formData)
+});
+```
+
+## 📚 Learn More
+
+- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features
+- [React Documentation](https://react.dev) - Learn React concepts
+- [TypeScript Handbook](https://www.typescriptlang.org/docs) - TypeScript guide
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs) - Tailwind utilities
+
+## 🚀 Deployment
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+This creates an optimized production build with:
+- Minified JavaScript and CSS
+- Optimized images and fonts
+- Static generation where possible
+- Performance optimizations
+
+### Deploy on Vercel
+
+The easiest way to deploy is using [Vercel Platform](https://vercel.com/new):
+
+1. Connect your GitHub repository
+2. Configure environment variables if needed
+3. Deploy automatically on push to main branch
+
+For other deployment options, see the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying).
+
+---
+
+**Part of the [DCF Calculator Web Application](../README.md) project.**
