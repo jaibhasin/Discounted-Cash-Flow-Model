@@ -2,6 +2,7 @@
 
 > A comprehensive, modern web application for Discounted Cash Flow (DCF) analysis to determine the intrinsic value of investments and companies.
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1-green.svg)](https://fastapi.tiangolo.com)
 [![Next.js](https://img.shields.io/badge/Next.js-15.5.2-black.svg)](https://nextjs.org)
@@ -36,25 +37,43 @@ The DCF Calculator is a sophisticated financial analysis tool that helps investo
 
 ## ✨ Features
 
+## ✨ Features
+
 ### 🧮 Core DCF Calculations
-- **Multi-year Projections**: 5-year detailed cash flow projections
-- **Terminal Value**: Perpetual growth model for long-term value
-- **Present Value Analysis**: Discounted cash flow calculations
-- **Value Breakdown**: Percentage contribution analysis
+- **Multi-year Projections**: Detailed 5-year cash flow projections with individual present values
+- **Terminal Value**: Perpetual growth model for sustainable long-term value estimation
+- **Present Value Analysis**: Comprehensive discounted cash flow calculations
+- **Value Breakdown**: Percentage contribution analysis between growth and terminal periods
+- **Sensitivity Analysis**: Support for multiple scenarios and assumptions
 
 ### 💻 Web Application Features
-- **Interactive UI**: Modern, responsive design with Tailwind CSS
-- **Real-time Validation**: Input validation and error handling
-- **Visual Results**: Progress bars and detailed result tables
-- **Mobile Responsive**: Optimized for all device sizes
-- **Fast Performance**: Built with Next.js 15 and Turbopack
+- **Interactive UI**: Modern, responsive design with Tailwind CSS and intuitive user experience
+- **Real-time Validation**: Advanced input validation with immediate user feedback
+- **Visual Results**: Progress bars, charts, and detailed result tables
+- **Mobile Responsive**: Fully optimized for desktop, tablet, and mobile devices
+- **Fast Performance**: Built with Next.js 15, Turbopack, and modern optimization techniques
+- **Accessibility**: WCAG 2.1 compliant design with keyboard navigation and screen reader support
 
 ### 🔧 Technical Features
-- **RESTful API**: FastAPI backend with comprehensive documentation
-- **Type Safety**: Full TypeScript implementation
-- **Input Validation**: Pydantic models for data validation
-- **CORS Support**: Seamless frontend-backend integration
-- **Error Handling**: Comprehensive error management
+- **RESTful API**: Comprehensive FastAPI backend with OpenAPI documentation
+- **Type Safety**: Full TypeScript implementation across frontend and API contracts
+- **Input Validation**: Robust Pydantic models for data validation and serialization
+- **CORS Support**: Seamless frontend-backend integration with proper security headers
+- **Error Handling**: Comprehensive error management with user-friendly messages
+- **Development Tools**: Hot reloading, ESLint, TypeScript checking, and debugging support
+
+### 📊 Comparison: Web App vs Command Line
+
+| Feature | Web Application | Command Line (`dcf.py`) |
+|---------|----------------|-------------------------|
+| **User Interface** | Modern, responsive GUI | Text-based interactive prompts |
+| **Input Method** | Form with validation | Manual input with basic validation |
+| **Results Display** | Tables, charts, visual breakdown | Formatted text output |
+| **Multiple Calculations** | Easy form reset and recalculation | Loop-based repeated calculations |
+| **Data Export** | Copy results, potential PDF export | Screen output only |
+| **Accessibility** | Full accessibility support | Command-line accessibility |
+| **Platform** | Any device with web browser | Python environment required |
+| **API Integration** | RESTful API for third-party use | Standalone script only |
 
 ## 🛠 Technology Stack
 
@@ -362,30 +381,64 @@ Discounted-Cash-Flow-Model/
 
 ## 💡 Usage Examples
 
-### Example 1: Basic Company Valuation
+## 💡 Usage Examples
+
+### Example 1: High Growth Company Valuation
+
+**Scenario**: A technology startup with high growth potential
 
 **Input:**
-- Current Earnings: ₹1,000,000
-- Discount Rate: 12% (0.12)
-- Growth Rate: 15% (0.15) for first 5 years
-- Terminal Growth: 3% (0.03)
+```json
+{
+  "current_earnings": 1000000,
+  "discount_rate": 0.12,
+  "growth_rate": 0.20,
+  "terminal_growth": 0.03
+}
+```
 
-**Expected Output:**
-- Higher growth rate leads to higher valuations
-- Terminal value typically represents 70-80% of total value
-- 5-year cash flows contribute 20-30% of total value
+**Key Insights:**
+- Higher growth rate (20%) leads to significantly higher valuations
+- Terminal value typically represents 60-70% of total value for high-growth companies
+- Higher discount rate (12%) accounts for increased risk
 
-### Example 2: Conservative Analysis
+### Example 2: Mature Company Analysis
+
+**Scenario**: An established company with steady, moderate growth
 
 **Input:**
-- Current Earnings: ₹500,000
-- Discount Rate: 10% (0.10)
-- Growth Rate: 5% (0.05) for first 5 years
-- Terminal Growth: 2% (0.02)
+```json
+{
+  "current_earnings": 500000,
+  "discount_rate": 0.08,
+  "growth_rate": 0.05,
+  "terminal_growth": 0.02
+}
+```
 
-**Expected Output:**
-- More conservative assumptions lead to lower valuations
-- Better suited for mature, stable companies
+**Key Insights:**
+- Conservative growth assumptions (5%) suitable for mature businesses
+- Lower discount rate (8%) reflects lower risk profile
+- Terminal value represents larger portion (80%+) of total value
+
+### Example 3: Value Investing Approach
+
+**Scenario**: Conservative analysis with margin of safety
+
+**Input:**
+```json
+{
+  "current_earnings": 750000,
+  "discount_rate": 0.15,
+  "growth_rate": 0.08,
+  "terminal_growth": 0.02
+}
+```
+
+**Key Insights:**
+- High discount rate (15%) provides margin of safety
+- Moderate growth assumptions reduce speculation risk
+- Results in more conservative valuations suitable for value investing
 
 ### Command Line Usage
 
@@ -524,10 +577,74 @@ This project is open source and available under the [MIT License](LICENSE).
 - **Repository**: [github.com/jaibhasin/Discounted-Cash-Flow-Model](https://github.com/jaibhasin/Discounted-Cash-Flow-Model)
 - **Issues**: [Report bugs or request features](https://github.com/jaibhasin/Discounted-Cash-Flow-Model/issues)
 
+## 📈 DCF Theory and Implementation
+
+### Discounted Cash Flow Fundamentals
+
+The DCF model is based on the principle that the value of an investment is equal to the present value of all future cash flows it will generate. This application implements the standard DCF formula:
+
+```
+DCF Value = Σ(CFt / (1 + r)^t) + TV / (1 + r)^n
+```
+
+Where:
+- `CFt` = Cash flow in year t
+- `r` = Discount rate (required rate of return)
+- `t` = Time period
+- `TV` = Terminal value
+- `n` = Number of projection years (5 years in this model)
+
+### Two-Stage DCF Model
+
+This implementation uses a two-stage approach:
+
+1. **Explicit Forecast Period (Years 1-5)**
+   - Detailed year-by-year projections
+   - Uses specified growth rate
+   - Each year's cash flow is individually discounted
+
+2. **Terminal Value (Beyond Year 5)**
+   - Assumes perpetual growth at terminal growth rate
+   - Uses Gordon Growth Model: `TV = CF6 / (r - g_terminal)`
+   - Provides sustainable long-term value estimate
+
+### Key Assumptions and Limitations
+
+**Assumptions:**
+- Cash flows grow at a constant rate during the explicit period
+- Terminal growth rate remains constant indefinitely
+- Discount rate accurately reflects the investment risk
+- Business will continue operating indefinitely
+
+**Limitations:**
+- Highly sensitive to input assumptions
+- Does not account for business cycles
+- Terminal value often represents majority of total value
+- Requires accurate estimation of growth and discount rates
+
 ---
 
 ## 🙏 Acknowledgments
 
-This project builds upon fundamental DCF analysis principles and provides a modern, accessible interface for financial calculations. Special thanks to the open-source community for the excellent frameworks and libraries that make this project possible.
+This project builds upon fundamental DCF analysis principles used throughout the finance industry. The implementation provides a modern, accessible interface for financial calculations while maintaining mathematical accuracy and theoretical soundness.
+
+### Special Thanks
+
+- **Open Source Community**: For the excellent frameworks and libraries
+- **FastAPI Team**: For the high-performance web framework
+- **Vercel Team**: For Next.js and the modern React ecosystem
+- **Tailwind Labs**: For the utility-first CSS framework
+- **Finance Community**: For DCF methodology and best practices
+
+### Educational Resources
+
+For those interested in learning more about DCF analysis:
+- [Investopedia DCF Guide](https://www.investopedia.com/terms/d/dcf.asp)
+- [CFA Institute Materials](https://www.cfainstitute.org)
+- [Financial Modeling Best Practices](https://www.wallstreetprep.com)
 
 **Built with ❤️ using FastAPI, Next.js, and modern web technologies.**
+
+---
+
+*This project is for educational and analytical purposes. Always consult with qualified financial professionals for investment decisions.*
